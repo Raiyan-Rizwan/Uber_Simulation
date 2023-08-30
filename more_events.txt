@@ -1,0 +1,65 @@
+# Test Cases:
+#
+# 1)
+0 DriverRequest Driver1 5,5 2
+0 DriverRequest Driver2 3,2 2
+0 DriverRequest Driver3 1,1 2
+#
+2 RiderRequest Rider1 1,2 10,10 9
+2 RiderRequest Rider2 2,1 1,2 2
+2 RiderRequest Rider3 5,5 0,0 10
+#
+# Result:
+# [[5, 5], [2, 1], [1, 2], [1, 2]]
+# [[3, 2], [5, 5], [0, 0], [0, 0]]
+# [[1, 1], [1, 2], [10, 10], [10, 10]]
+# {'rider_wait_time': 1.0, 'driver_total_distance': 14.0, 'driver_ride_distance': 9.666666666666666}
+# None
+#
+# 2)
+# 0 DriverRequest Driver1 5,5 10
+# 0 DriverRequest Driver2 3,2 2
+# 0 DriverRequest Driver3 1,1 5
+#
+# 2 RiderRequest Rider1 1,2 10,10 9
+# 2 RiderRequest Rider2 2,1 1,2 2
+# 2 RiderRequest Rider3 5,5 0,0 10
+#
+# Result:
+# [[5, 5], [2, 1], [1, 2], [1, 2]]
+# [[3, 2], [5, 5], [0, 0], [0, 0]]
+# [[1, 1], [1, 2], [10, 10], [10, 10]]
+# {'rider_wait_time': 1.0, 'driver_total_distance': 14.0, 'driver_ride_distance': 9.666666666666666}
+#
+# 3)
+# 0 DriverRequest Amaranth 1,1 1
+# 5 DriverRequest Bergamot 1,2 1
+# 10 DriverRequest Crocus 3,1 1
+#
+# 0 RiderRequest Almond 1,1 5,5 10
+# 5 RiderRequest Bisque 3,2 2,3 5
+# 10 RiderRequest Cerise 4,2 1,5 15
+#
+# Result:
+# [[1, 1], [1, 1], [5, 5], [5, 5]]
+# [[1, 2], [3, 2], [2, 3], [2, 3]]
+# [[3, 1], [4, 2], [1, 5], [1, 5]]
+# {'rider_wait_time': 1.3333333333333333, 'driver_total_distance': 6.666666666666667, 'driver_ride_distance': 5.333333333333333}
+#
+# 4)
+# 0 DriverRequest Amaranth 1,1 1
+# 5 DriverRequest Bergamot 1,2 1
+# 10 DriverRequest Crocus 3,1 1
+# 10 DriverRequest Cro 1,3 1
+#
+# 0 RiderRequest Almond 1,1 5,5 10
+# 5 RiderRequest Bisque 3,2 2,3 5
+# 5 RiderRequest Cerise 4,2 1,5 15
+# 10 RiderRequest Rohan 2,4 1,1 5
+#
+# Result:
+# [[1, 1], [1, 1], [5, 5], [5, 5], [4, 2], [1, 5]]
+# [[1, 2], [3, 2], [2, 3], [2, 3], [2, 4], [1, 1]]
+# [3, 1]
+# [1, 3]
+# {'rider_wait_time': 2.5, 'driver_total_distance': 6.75, 'driver_ride_distance': 2.5}
